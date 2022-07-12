@@ -4,9 +4,8 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h5 class="bg-primary text-white text-center p-2">Item Create</h5>
 
-<h4>Item</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -27,15 +26,12 @@
                 <input asp-for="Topic" class="form-control" />
                 <span asp-validation-for="Topic" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+            <div class="py-2">
+                <input type="submit" value="Submit" class="btn btn-primary" />
+                <a class="btn btn-secondary" asp-action="Index">Back to List</a>
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

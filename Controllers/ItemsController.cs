@@ -19,11 +19,17 @@ namespace CollectionsApp.Controllers
         }
 
         // GET: Items
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string id)
         {
-              return _context.Item != null ? 
-                          View(await _context.Item.ToListAsync()) :
-                          Problem("Entity set 'CollectionsAppContext.Item'  is null.");
+            var items = from i in _context.Item
+                        select i;
+            
+            if (!String.IsNullOrEmpty(id)) {
+                items = items.Where(s => s.Topic!.Contains(id));
+            }
+            
+            return View(await items.ToListAsync());
+            
         }
 
         // GET: Items/Details/5

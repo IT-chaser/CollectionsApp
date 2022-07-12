@@ -1,15 +1,15 @@
 @model IEnumerable<CollectionsApp.Models.Collection>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Collections";
 }
 
-<h1>Index</h1>
+<h5 class="bg-primary text-white text-center p-2">Collections Home Page</h5>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a class="btn btn-sm btn-primary" asp-action="Create">Create New</a>
 </p>
-<table class="table">
+<table class="table table-sm table-bordered">
     <thead>
         <tr>
             <th>
@@ -21,14 +21,14 @@
             <th>
                 @Html.DisplayNameFor(model => model.Topic)
             </th>
-            <th></th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Name)
+                <a class="btn btn-sm btn-outline-info" asp-controller="Items" asp-action="Index" asp-route-id="@item.Topic">@Html.DisplayFor(modelItem => item.Name)</a>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Description)
@@ -36,10 +36,10 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Topic)
             </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            <td class="text-center">
+                <a class="btn btn-sm btn-warning" asp-action="Edit" asp-route-id="@item.Id">Edit</a> 
+                <a class="btn btn-sm btn-info" asp-action="Details" asp-route-id="@item.Id">Details</a> 
+                <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
 }
